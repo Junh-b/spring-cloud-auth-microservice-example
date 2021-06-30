@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import net.junhabaek.authservice.domain.User;
 import net.junhabaek.authservice.service.UserService;
 import net.junhabaek.authservice.service.dto.CreateUserRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,8 +27,7 @@ public class UserController {
 
         CreateUserResponse response = new CreateUserResponse(user.getName(), user.getEmail());
 
-        // TODO need to be replaced with 'created'
-        return ResponseEntity.ok(response);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @Data
