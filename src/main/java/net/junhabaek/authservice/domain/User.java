@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Table(name="users")
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 50, unique = true)
@@ -18,11 +18,13 @@ public class User {
     @Column(nullable = false, length = 50)
     private String name;
     @Column(nullable = false)
-    private String encrytedPwd;
+    private String encryptedPwd;
 
-    public User(String email, String name, String encrytedPwd) {
+    protected User(){}
+
+    public User(String email, String name, String encryptedPwd) {
         this.email = email;
         this.name = name;
-        this.encrytedPwd = encrytedPwd;
+        this.encryptedPwd = encryptedPwd;
     }
 }

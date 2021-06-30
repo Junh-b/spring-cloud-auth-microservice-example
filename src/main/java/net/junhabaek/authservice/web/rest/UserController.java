@@ -3,7 +3,7 @@ package net.junhabaek.authservice.web.rest;
 import lombok.RequiredArgsConstructor;
 import net.junhabaek.authservice.domain.User;
 import net.junhabaek.authservice.service.UserService;
-import net.junhabaek.authservice.web.rest.dto.CreateMemberRequest;
+import net.junhabaek.authservice.service.dto.CreateMemberRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

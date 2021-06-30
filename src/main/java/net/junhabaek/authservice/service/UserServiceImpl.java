@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import net.junhabaek.authservice.domain.CreateUserService;
 import net.junhabaek.authservice.domain.User;
 import net.junhabaek.authservice.repository.UserRepository;
-import net.junhabaek.authservice.web.rest.dto.CreateMemberRequest;
+import net.junhabaek.authservice.service.dto.CreateMemberRequest;
 import org.springframework.stereotype.Service;
 
 @Service

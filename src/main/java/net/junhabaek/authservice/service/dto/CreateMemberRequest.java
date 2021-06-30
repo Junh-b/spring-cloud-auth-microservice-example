@@ -1,4 +1,4 @@
-package net.junhabaek.authservice.web.rest.dto;
+package net.junhabaek.authservice.service.dto;
 
 import lombok.Data;
 
