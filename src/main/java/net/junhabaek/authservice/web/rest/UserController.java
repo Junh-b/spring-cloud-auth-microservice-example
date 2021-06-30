@@ -1,9 +1,10 @@
 package net.junhabaek.authservice.web.rest;
 
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import net.junhabaek.authservice.domain.User;
 import net.junhabaek.authservice.service.UserService;
-import net.junhabaek.authservice.service.dto.CreateMemberRequest;
+import net.junhabaek.authservice.service.dto.CreateUserRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,8 +21,23 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<String> createUser(@RequestBody @Valid CreateMemberRequest cmr){
+    public ResponseEntity<CreateUserResponse> createUser(@RequestBody @Valid CreateUserRequest cmr){
         User user = userService.createUser(cmr);
-        return ResponseEntity.ok(user.getId().toString());
+
+        CreateUserResponse response = new CreateUserResponse(user.getName(), user.getEmail());
+
+        // TODO need to be replaced with 'created'
+        return ResponseEntity.ok(response);
+    }
+
+    @Data
+    protected static class CreateUserResponse{
+        private String name;
+        private String email;
+
+        public CreateUserResponse(String name, String email) {
+            this.name = name;
+            this.email = email;
+        }
     }
 }

@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Data
-public class CreateMemberRequest {
+public class CreateUserRequest {
     @NotNull(message="Email can not be null")
     @Email
     private String email;

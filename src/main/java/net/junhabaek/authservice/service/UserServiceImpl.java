@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import net.junhabaek.authservice.domain.CreateUserService;
 import net.junhabaek.authservice.domain.User;
 import net.junhabaek.authservice.repository.UserRepository;
-import net.junhabaek.authservice.service.dto.CreateMemberRequest;
+import net.junhabaek.authservice.service.dto.CreateUserRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService{
     private final CreateUserService createUserService;
 
     @Override
-    public User createUser(CreateMemberRequest cmr) {
+    public User createUser(CreateUserRequest cmr) {
 
         User user = createUserService.createUser(cmr.getEmail(), cmr.getName(), cmr.getPwd());
         userRepository.save(user);
