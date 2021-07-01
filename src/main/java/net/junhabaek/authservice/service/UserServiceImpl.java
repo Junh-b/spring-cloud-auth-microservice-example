@@ -1,6 +1,7 @@
 package net.junhabaek.authservice.service;
 
 import lombok.RequiredArgsConstructor;
+import net.junhabaek.authservice.common.exception.EntityNotFoundException;
 import net.junhabaek.authservice.domain.CreateUserService;
 import net.junhabaek.authservice.domain.User;
 import net.junhabaek.authservice.repository.UserRepository;
@@ -20,5 +21,15 @@ public class UserServiceImpl implements UserService{
         userRepository.save(user);
 
         return user;
+    }
+
+    @Override
+    public User findUserByUserId(Long userId) {
+        return userRepository.findById(userId).orElseThrow(()->new EntityNotFoundException("entity not found"));
+    }
+
+    @Override
+    public Iterable<User> findAllUser() {
+        return userRepository.findAll();
     }
 }

@@ -4,5 +4,7 @@ import net.junhabaek.authservice.domain.User;
 import net.junhabaek.authservice.service.dto.CreateUserRequest;
 
 public interface UserService {
-    public User createUser(CreateUserRequest cmr);
+    User createUser(CreateUserRequest cmr);
+    User findUserByUserId(Long userId);
+    Iterable<User> findAllUser();
 }
