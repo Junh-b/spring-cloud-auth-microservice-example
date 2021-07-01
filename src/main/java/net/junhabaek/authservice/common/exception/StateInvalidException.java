@@ -1,5 +1,8 @@
 package net.junhabaek.authservice.common.exception;
 
-public abstract class StateInvalidException extends RuntimeException{
+public class StateInvalidException extends BusinessException{
+    public StateInvalidException(String message) {
+        super(message, ErrorStatus.INVALID_TYPE_VALUE);
+    }
 }
 

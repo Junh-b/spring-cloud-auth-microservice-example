@@ -1,4 +1,7 @@
 package net.junhabaek.authservice.common.exception;
 
-public abstract class EntityNotFoundException extends RuntimeException{
+public class EntityNotFoundException extends BusinessException{
+    public EntityNotFoundException(String message) {
+        super(message, ErrorStatus.ENTITY_NOT_FOUND);
+    }
 }
