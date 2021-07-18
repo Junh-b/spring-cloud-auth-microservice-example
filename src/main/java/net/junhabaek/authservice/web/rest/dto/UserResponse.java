@@ -5,7 +5,7 @@ import lombok.Data;
 import net.junhabaek.authservice.domain.User;
 
 @Data
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL) // for null field
 public class UserResponse {
     private String email;
     private String name;
