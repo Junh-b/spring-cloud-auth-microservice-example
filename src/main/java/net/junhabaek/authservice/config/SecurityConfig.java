@@ -22,15 +22,9 @@ import javax.servlet.Filter;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
     private final UserService userService;
 
-
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        this.passwordEncoder = new BCryptPasswordEncoder();
-        return passwordEncoder;
-    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -45,9 +39,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic().disable()
                 .cors().configurationSource(corsConfigurationSource());
 
-        http.authorizeRequests().antMatchers("/**");
+        http.authorizeRequests().antMatchers("/**")
+                .permitAll().and().addFilter(getAuthenticationFilter());
 
-        http.addFilter(getAuthenticationFilter());
     }
 
     private AuthenticationFilter getAuthenticationFilter() throws Exception {
