@@ -5,6 +5,7 @@ import net.junhabaek.authservice.security.AuthenticationFilter;
 import net.junhabaek.authservice.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -24,6 +25,7 @@ import javax.servlet.Filter;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final PasswordEncoder passwordEncoder;
     private final UserService userService;
+    private final Environment environment;
 
 
     @Override
@@ -45,8 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     private AuthenticationFilter getAuthenticationFilter() throws Exception {
-        AuthenticationFilter authenticationFilter = new AuthenticationFilter();
-        authenticationFilter.setAuthenticationManager(authenticationManager());
+        AuthenticationFilter authenticationFilter = new AuthenticationFilter(
+                authenticationManager(), userService, environment);
 
         return authenticationFilter;
     }
