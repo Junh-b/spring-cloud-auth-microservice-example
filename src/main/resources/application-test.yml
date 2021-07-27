@@ -1,0 +1,17 @@
+server:
+  port:
+    3000
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+logging.level:
+  org.springframework.web.filter.CommonsRequestLoggingFilter: debug
+  org.hibernate.SQL: debug
+  org.hibernate.type: trace
+
+token:
+  expiration_time: 86400000
+  secret: 1234

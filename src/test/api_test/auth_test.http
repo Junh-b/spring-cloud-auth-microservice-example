@@ -1,0 +1,24 @@
+### Register
+POST http://localhost:{{port}}/user
+Content-Type: application/json
+
+{
+  "name": "jun",
+  "email": "abc@gmail.com",
+  "pwd": "abcdef"
+}
+
+### Login
+POST http://localhost:{{port}}/login
+Content-Type: application/json
+
+{
+  "email": "abc@gmail.com",
+  "password": "abcdef"
+}
+
+> {% client.global.set("auth_token", response.headers.valueOf("token")); %}
+
+### using token
+GET http://localhost:{{port}}/user
+Authorization: Bearer {{auth_token}}
